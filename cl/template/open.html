@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <title>KD Autogarage</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: #000;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            display: block;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-style: oblique;
+            font-variant: small-caps;
+        }
+
+        header img {
+            width: 10%;
+            height: 90%;
+            background-size: cover;
+            display: block;
+            transform: translate(0px, 10px);
+            position: absolute;
+            left: 60px;
+            top: 0px;
+
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: small;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #e63900;
+        }
+
+
+        .features {
+            padding: 50px 20px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .features h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .features .cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-size:small;
+            background-position:center;
+            position: relative;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-image: url("{% static 'image/onestopImage.png'%}");
+            background-repeat: no-repeat;
+            text-align: center;
+            
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero div {
+            position: relative;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: #e63900;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #cc2900;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+        .card {
+            background: #f9f9f9;
+            border: 1px solid #f7f1f1;
+            border-radius: 8px;
+            width: 250px;
+            height: 350px;
+
+            margin: 15px;
+            position: relative;
+            perspective: 1000px;
+
+        }
+
+        .cardbody {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            background: rgba(194, 188, 188, 0.055);
+            backdrop-filter: blur(10px);
+            transform: rotateY(180deg);
+            /* Hidden at the start (flipped) */
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            /* Hides back content during flip */
+            transition: transform 0.6s ease-in-out;
+            /* Smooth flip animation */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .card .front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .card:hover .front {
+            transform: rotateY(180deg);
+            /* Front flips away on hover */
+        }
+
+        .card:hover .cardbody {
+            transform: rotateY(0);
+            /* Back becomes visible */
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .card h4 {
+            margin: 15px 0;
+
+        }
+
+        .cardtitle {
+            color: black;
+            font-size: 30px;
+            font-style: oblique;
+        }
+
+        .cardn {
+            color: black;
+            font-size: medium;
+            text-align: left;
+            padding: 5px;
+
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #ff4500;
+            text-decoration: none;
+        }
+
+
+        /* SWIPER CONTAINER  ----service*/
+        .swiper-container {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+            color: black;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .swiper-slide {
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition-property: transform;
+            display: block
+        }
+
+        .swiper-slide {
+            text-align: center;
+            background: rgb(248, 247, 247);
+            padding: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            box-shadow: 40px 40px 40px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .swiper-wrapper {
+            position: relative;
+            width: 100%;
+            /* height:100%; */
+            z-index: 1;
+
+            display: flex;
+            transition-property: transform;
+            transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+            box-sizing: content-box
+        }
+
+        .swiper-slide:hover {
+            transform: scale(1.1);
+
+        }
+
+        .swiper-slide img {
+
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+
+
+        /*------------------*/
+        .sendcontainer {
+            padding: 50px;
+            align-items: center;
+
+        }
+
+        .how-it-works h2 {
+            color: black;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .step img {
+            width: 40px;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    {% load static %}
+    <header>
+        <img class="img" src="{% static 'image/LOGOR.png' %}">
+        <h1>KD Autogarage</h1>
+        <nav>
+
+            <a href=" rhome" class="fa fa-home "> Home</a>
+            <a href="#features" class="fa fa-car"> Features</a>
+            <a href="contact" class="fa fa-phone"> Contact</a>
+            <a href=" servicelogin" class="fa fa-user"> Service Login</a>
+            <a href="roadside" class="fa fa-car"> roadside assistance</a>
+
+
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div>
+            <h2>Welcome To KD Autogarage</h2>
+            <p>Quality service for your car, anytime, anywhere.</p>
+            <a href="servicelogin" class="btn"> Explore service</a>
+        </div> 
+    </section>
+    <section>
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"> <a href="servicelogin"><img src="{% static 'image/swip/detailing.jpg' %}"
+                            alt="Detailing"></a>
+
+                    <p>Detailing</p>
+                </div>
+                <div class="swiper-slide"><a href="servicelogin"><img src="{% static 'image/swip/paint.jpg' %}"
+                            alt="Painting"></a>
+                    <p>Painting</p>
+                </div>
+                <div class="swiper-slide"><a href="servicelogin"><img src="{% static 'image/swip/generalserver.jpg' %}"
+                            alt="General Service"></a>
+                    <p>General Service</p>
+                </div>
+                <div class="swiper-slide"><a href="servicelogin"><img src="{% static 'image/swip/ac.jpg' %}"
+                            alt="AC Service"></a>
+                    <p>AC Service</p>
+                </div>
+                <div class="swiper-slide"><a href="servicelogin"><img src="{% static 'image//swip/custom.jpg' %}"
+                            alt="Custom Repair"></a>
+                    <p>Custom Repair</p>
+                </div>
+                <div class="swiper-slide"><a href="servicelogin"><img src="{% static 'image/swip/insurance.jpg' %}"
+                            alt="Insurance"></a>
+                    <p>Insurance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="features" id="features">
+        <h3 style="font-style: italic;">OUR FEATURED CARS MODELS</h3>
+        <div class="cards">
+
+            <div class="card">
+                <img src="{% static 'image/sportscarimage.jpg' %}" alt="Sports Car">
+                <h4>Sports Car</h4>
+                <p>High-speed performance and sleek design.</p>
+                <div class="cardbody">
+                    <h1 class="cardtitle">Sports Car</h1>
+                    <div class="cardn">
+                        <p><strong>Speed:</strong>0-60 mphin 3.5seconds</p>
+                        <p><strong>Engine:</strong> Twin-turbocharged V8</p>
+                        <p><strong>Design:</strong> Aerodynamic body with a futuristic cockpit</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'image/luxurycarimage.jpg' %}" alt="Luxury Car">
+                <h4>Luxury Sedan</h4>
+                <p>Elegant interiors and world-class comfort.</p>
+                <div class="cardbody">
+                    <h1 class="cardtitle">Luxury Sedan</h1>
+                    <div class="cardn">
+                        <p><strong>Interior:</strong> Premium leather seating with ambient lighting.</p>
+                        <p><strong>Technology:</strong> Advanced infotainment system and autonomous driving features.
+                        </p>
+                        <p><strong>Performance:</strong> Smooth and quiet ride powered by a hybrid engine.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'image/suvcarimage.jpg' %}" alt="SUV">
+                <h4>Powerful SUV</h4>
+                <p>Versatility and power for all terrains.</p>
+                <div class="cardbody">
+                    <h1 class="cardtitle">Powerful SUV</h1>
+                    <div class="cardn">
+                        <p><strong>Engine:</strong> Turbocharged V6</p>
+
+                        <p><strong>Terrain:</strong> All-Wheel Drive for off-road adventures</p>
+
+                        <p><strong>Seating:</strong> Up to 7 passengers</p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+
+        <div class="swiper-container">
+            <center>
+                <h3 style="font-style: italic;"> ASSOCIATE PARTNERS</h3>
+            </center>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"> <a href="#"><img src="{% static 'image/panter/castrol.jpg' %}"
+                            alt="castrol"></a>
+
+
+                </div>
+                <div class="swiper-slide"><a href="#"><img src="{% static 'image/panter/liquimoly .jpg' %}"
+                            alt="liquimoly"></a>
+
+                </div>
+                <div class="swiper-slide"><a href="#"><img src="{% static 'image/panter/Axalta.jpg' %}"
+                            alt="Axalta"></a>
+
+                </div>
+                <div class="swiper-slide"><a href="#"><img src="{% static 'image/panter/tata1.jpg' %}" alt="tata1"></a>
+
+                </div>
+                <div class="swiper-slide"><a href="#"><img src="{% static 'image/panter/michelin.jpg' %}"
+                            alt="michelin"></a>
+
+                </div>
+                <div class="swiper-slide"><a href="#"><img src="{% static 'image/panter/goodyear.jpg' %}"
+                            alt="goodyear"></a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="sendcontainer">
+            <section class="how-it-works">
+                <h2>HOW IT WORKS?</h2>
+                <div class="step">
+                    <img src="{% static  'image/footericon/step1.jpg'%}" alt="Select Service">
+                    <p><strong>1. SELECT YOUR SERVICE</strong><br>You can login or checkout as a guest.</p>
+                </div>
+                <div class="step">
+                    <img src="{% static  'image/footericon/step2.jpg'%}" alt="Schedule Pickup">
+                    <p><strong>2. SCHEDULE YOUR PICKUP</strong><br>Choose the next best available time slot for pickup.
+                    </p>
+                </div>
+                <div class="step">
+                    <img src="{% static  'image/footericon/step3.jpg'%}" alt="Buy Service">
+                    <p><strong>3. BUY OUR SERVICE</strong><br>Pay online or offline & buy our service.</p>
+                </div>
+                <div class="step">
+                    <img src="{% static  'image/footericon/step4.jpg'%}" alt="Pick Up Car">
+                    <p><strong>4. PICK UP YOUR CAR</strong><br>We will take your car for repair.</p>
+                </div>
+            </section>
+    </section>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Swiper(".swiper-container", {
+                slidesPerView: 5,
+                spaceBetween: 20,
+                loop: true,
+                centeredSlides: true,
+                autoplay: { delay: 3000, disableOnInteraction: false },
+                pagination: { el: ".swiper-pagination", clickable: true },
+                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+                breakpoints: {
+                    320: { slidesPerView: 1 },
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 4 },
+                    1440: { slidesPerView: 5 }
+                }
+            });
+        });
+    </script>
+
+    <footer id="contact">
+        <p>&copy; 2025 KD Automobiles. Designed with ♥ by naran.</p>
+        <p><a href="mailto:narandarank@gmail.com">Contact Us</a></p>
+    </footer>
+</body>
+
+</html>

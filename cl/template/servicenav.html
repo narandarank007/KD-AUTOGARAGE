@@ -1,0 +1,94 @@
+{% load static %}
+<header>
+    {% block content %}
+    <img src="{% static 'image/LOGOR.png' %}" alt="KD Autogarage Logo">
+    <h1>KD Autogarage</h1>
+    <h2> Our Services</h2><br>
+    <nav>
+        <div class="size">
+
+
+            <a href="profile" class="fa fa-home "> Home</a>
+            <a href="profile#generalservice" class="fa fa-car"> General Service</a>
+            <a href="detailing" class="fa fa-search"> Detailing</a>
+            <a href="painting" class="fa fa-paint-brush"> Painting</a>
+           
+            <a href="acservice" class="fas fa-wind"> AC Service</a>
+            <a href="custom" class="fa fa-car"> Custom Repair</a>
+            <a href="insurance" class="fa fa-heartbeat"> Insurance</a>
+        </div><br>
+
+
+        <div class="top">
+            {% if user.is_authenticated %}
+            <form method="post" action="{% url 'servicelogout' %}">
+                {% csrf_token %}
+                <button class="maa" type="submit">Logout</button>
+            </form>
+            <div class="ma">
+                <p>Welcome, {{ user.username }}</p>
+            </div>
+            {% endif %}
+
+        </div>
+    </nav>
+
+</header>
+<section>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"> <a href="detailing"><img src="{% static 'image/swip/detailing.jpg' %}"
+                        alt="Detailing"></a>
+
+                <p>Detailing</p>
+            </div>
+            <div class="swiper-slide"><a href="painting"><img src="{% static 'image/swip/paint.jpg' %}"
+                        alt="Painting"></a>
+                <p>Painting</p>
+            </div>
+            <div class="swiper-slide"><a href="profile#generalservice"><img src="{% static 'image/swip/generalserver.jpg' %}"
+                        alt="General Service"></a>
+                <p>General Service</p>
+            </div>
+            <div class="swiper-slide"><a href="acservice"><img src="{% static 'image/swip/ac.jpg' %}"
+                        alt="AC Service"></a>
+                <p>AC Service</p>
+            </div>
+            <div class="swiper-slide"><a href="custom"><img src="{% static 'image/swip/custom.jpg' %}"
+                        alt="Custom Repair"></a>
+                <p>Custom Repair</p>
+            </div>
+            <div class="swiper-slide"><a href="insurance"><img src="{% static 'image/swip/insurance.jpg' %}"
+                        alt="Insurance"></a>
+                <p>Insurance</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        new Swiper(".swiper-container", {
+            slidesPerView: 5,
+            spaceBetween: 20,
+            loop: true,
+            centeredSlides: true,  
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            breakpoints: { 
+                320: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 4 },
+                1440: { slidesPerView: 5 }
+            }
+        });
+    });
+</script>

@@ -1,0 +1,170 @@
+{% extends "serviceindex.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+<section class="customservice" id="customservice">
+    <section class="header1">
+        <h1>All Services for Your Vehicle </h1>
+        <br>
+        <h2> Custom Service - Packages </h2>
+    </section>
+
+    <section class="service-packages">
+        <div class="package">
+            <h2><i class="fas fa-tools"></i>  Custom Service Works - Package 1</h2>
+            <h2><i class="fas fa-cogs"></i> Clutch Issue</h2>
+            <ul>
+                <li><i class="fas fa-wrench"></i> Clutch Pedal Hardness?</li>
+                <li><i class="fas fa-tachometer-alt"></i> Vehicle Low Pickup?</li>
+                <li><i class="fas fa-exclamation-triangle"></i> Clutch Shuttering?</li>
+                <li><i class="fas fa-burn"></i> Clutch Burnt Smell?</li>
+                <li><i class="fas fa-exchange-alt"></i> Problems with Gear Shifting?</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment' package='Custom Service Works - Package 1' %}">
+                {% csrf_token %}
+                <button type="submit">Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2><i class="fas fa-tools"></i>  Custom Service Works - Package 2</h2>
+            <h2><i class="fas fa-car-crash"></i> Brake Issue</h2>
+            <ul>
+                <li><i class="fas fa-tools"></i> Brake Noise?</li>
+                <li><i class="fas fa-vibration"></i> Brake Pedal Vibration?</li>
+                <li><i class="fas fa-tachometer-alt"></i> Brake Sharpness?</li>
+                <li><i class="fas fa-exclamation-circle"></i> Brake Pedal Not Functioning Properly?</li>
+                <li><i class="fas fa-hand-paper"></i> Hand Brake Issue?</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment'  package='Custom Service Works - Package 2' %}">
+                {% csrf_token %}
+                <button type="submit"> Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2><i class="fas fa-tools"></i>  Custom Service Works - Package 3</h2>
+            <h2><i class="fas fa-car-side"></i> Suspension Issue</h2>
+            <ul>
+                <li><i class="fas fa-road"></i> Bouncy Ride?</li>
+                <li><i class="fas fa-volume-up"></i> Noise on Uneven Roads?</li>
+                <li><i class="fas fa-compass"></i> Vibration in Steering?</li>
+                <li><i class="fas fa-sync"></i> Noise while Turning?</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment'  package='Custom Service Works - Package 3' %}">
+                {% csrf_token %}
+                <button type="submit"> Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2><i class="fas fa-tools"></i>  Custom Service Works - Package 4</h2>
+            <h2><i class="fas fa-battery-half"></i> Starting Issue</h2>
+            <ul>
+                <li><i class="fas fa-bolt"></i> Low Battery?</li>
+                <li><i class="fas fa-car-battery"></i> Not Cranking Properly?</li>
+                <li><i class="fas fa-bug"></i> Rat Bite?</li>
+                <li><i class="fas fa-question-circle"></i> Engine Cranking but Not Starting?</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment' package='Custom Service Works - Package 4' %}">
+                {% csrf_token %}
+                <button type="submit"> Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2><i class="fas fa-tools"></i> Custom Service Works - Package 5</h2>
+            <h2><i class="fas fa-thermometer-three-quarters"></i> Overheating Issue</h2>
+            <ul>
+                <li><i class="fas fa-tint"></i> Coolant Leakage?</li>
+                <li><i class="fas fa-snowflake"></i> AC Not Cooling?</li>
+                <li><i class="fas fa-car"></i> Difficult to Start?</li>
+                <li><i class="fas fa-temperature-high"></i> Temperature Warning Light?</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment'  package='Custom Service Works - Package 5'%}">
+                {% csrf_token %}
+                <button type="submit"> Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2><i class="fas fa-tools"></i>  Custom Service Works - Package 6</h2>
+            <h2><i class="fas fa-fan"></i> AC Cooling Issue</h2>
+            <ul>
+                <li><i class="fas fa-thermometer-empty"></i> Low Cooling?</li>
+                <li><i class="fas fa-adjust"></i> Uneven Cooling Effect?</li>
+                <li><i class="fas fa-sun"></i> Not Enough Cooling During Day?</li>
+                <li><i class="fas fa-smog"></i> AC Bad Smell?</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment' package='Custom Service Works - Package 6' %}">
+                {% csrf_token %}
+                <button type="submit"> Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2><i class="fas fa-tools"></i> Custom Service Works - Package 7</h2>
+            <h2><i class="fas fa-oil-can"></i> Oil Leakage Issue</h2>
+            <ul>
+                <li><i class="fas fa-parking"></i> Oil Leakage in Parking Area?</li>
+                <li><i class="fas fa-tachometer-alt"></i> Oil Level Warning Indicator?</li>
+                <li><i class="fas fa-tools"></i> Oil Leakage in Engine Compartment?</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment' package='Custom Service Works - Package 7' %}">
+                {% csrf_token %}
+                <button type="submit"> Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2><i class="fas fa-tools"></i>  Custom Service Works - Package 8</h2>
+            <h2><i class="fas fa-arrows-alt"></i> Vehicle Pulling Issue</h2>
+            <ul>
+                <li><i class="fas fa-align-center"></i> Wheel Alignment Issue?</li>
+                <li><i class="fas fa-tire"></i> Old Tyres?</li>
+                <li><i class="fas fa-steering-wheel"></i> Steering Wheel Not Aligned Properly?</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment'  package='Custom Service Works - Package 8'%}">
+                {% csrf_token %}
+                <button type="submit"> Book Appointment</button>
+            </form>
+        </div>
+    </section>
+    <section>
+        <div class="sendcontainer">
+            <CENTER>
+                <h2>HOW IT WORKS?</h2>
+            </CENTER>
+            <section class="how-it-works">
+
+                <div class="step">
+                    <img src="{% static 'image/footericon/step1.jpg' %}" alt="Select Service">
+                    <p><strong>1. SELECT YOUR SERVICE</strong><br>You can login or checkout as a guest.</p>
+                </div>
+                <div class="step">
+                    <img src="{% static 'image/footericon/step2.jpg' %}" alt="Schedule Pickup">
+                    <p><strong>2. SCHEDULE YOUR PICKUP</strong><br>Choose the next best available time slot for pickup.
+                    </p>
+                </div>
+                <div class="step">
+                    <img src="{% static 'image/footericon/step3.jpg' %}" alt="Buy Service">
+                    <p><strong>3. BUY OUR SERVICE</strong><br>Pay online or offline & buy our service.</p>
+                </div>
+                <div class="step">
+                    <img src="{% static 'image/footericon/step4.jpg' %}" alt="Pick Up Car">
+                    <p><strong>4. PICK UP YOUR CAR</strong><br>We will take your car for repair.</p>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+    <footer id="contact">
+        <p>&copy; 2025 KD Automobiles. Designed with ❤️ by naran.</p>
+        <p><a href="mailto:narandarank@gmail.com"><i class="fas fa-envelope"></i> Contact Us</a></p>
+    </footer>
+</section>
+
+{% endblock %}

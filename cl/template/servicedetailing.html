@@ -1,0 +1,129 @@
+{% extends "serviceindex.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+<section class="Detailingservice" id="detailingservice">
+    <section class="header1">
+        <h1>All Services for Your Vehicle</h1>
+        <br>
+        <h2>Detailing Service - Packages</h2>
+    </section>
+
+    <section class="service-packages">
+        <div class="package">
+            <h2>✨ Detailing Works - Package 1</h2>
+            <ul>
+                <li><i class="fas fa-soap"></i> Interior Foam Cleaning & Drying</li>
+                <li><i class="fas fa-wind"></i> Complete Car Vacuuming</li>
+                <li><i class="fas fa-tools"></i> Dashboard Cleaning & Protection</li>
+                <li><i class="fas fa-bath"></i> Body Foam Wash</li>
+                <li><i class="fas fa-tire"></i> Tyre Polishing</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment' package='Detailing Works - Package 1' %}">
+                {% csrf_token %}
+                <button type="submit">Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2>✨ Detailing Works - Package 2</h2>
+            <ul>
+                <li><i class="fas fa-soap"></i> Interior Foam Cleaning & Drying</li>
+                <li><i class="fas fa-wind"></i> Complete Car Vacuuming</li>
+                <li><i class="fas fa-tools"></i> Dashboard Cleaning & Protection</li>
+                <li><i class="fas fa-bath"></i> Full Car Foam Wash</li>
+                <li><i class="fas fa-tire"></i> Tyre Polishing</li>
+                <li><i class="fas fa-car-side"></i> Car Exterior Waxing</li>
+                <li><i class="fas fa-snowflake"></i> AC Vent Cleaning</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment' package='Detailing Works - Package 2' %}">
+                {% csrf_token %}
+                <button type="submit">Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2>✨ Detailing Works - Package 3</h2>
+            <ul>
+                <li><i class="fas fa-soap"></i> Interior Foam Cleaning & Drying</li>
+                <li><i class="fas fa-wind"></i> Complete Car Vacuuming</li>
+                <li><i class="fas fa-tools"></i> Dashboard Cleaning & Protection</li>
+                <li><i class="fas fa-bath"></i> Full Car Foam Wash</li>
+                <li><i class="fas fa-tire"></i> Tyre Polishing</li>
+                <li><i class="fas fa-spray-can"></i> Exterior Rubbing & Polishing</li>
+                <li><i class="fas fa-car-side"></i> Car Exterior Waxing</li>
+                <li><i class="fas fa-snowflake"></i> AC Vent & Duct Cleaning</li>
+                <li><i class="fas fa-border-all"></i> Exterior Door Show Beading Enrichment</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment'  package='Detailing Works - Package 3'%}">
+                {% csrf_token %}
+                <button type="submit">Book Appointment</button>
+            </form>
+        </div>
+
+        <div class="package">
+            <h2>✨ Detailing Works - Package 4</h2>
+            <ul>
+                <li><i class="fas fa-soap"></i> Interior Foam Cleaning & Drying</li>
+                <li><i class="fas fa-wind"></i> Complete Car Vacuuming</li>
+                <li><i class="fas fa-tools"></i> Dashboard Cleaning & Protection</li>
+                <li><i class="fas fa-bath"></i> Full Car Foam Wash</li>
+                <li><i class="fas fa-tire"></i> Tyre Polishing</li>
+                <li><i class="fas fa-spray-can"></i> Exterior Rubbing & Polishing</li>
+                <li><i class="fas fa-car-side"></i> Car Exterior Waxing</li>
+                <li><i class="fas fa-snowflake"></i> AC Vent Cleaning</li>
+                <li><i class="fas fa-snowflake"></i> AC Duct Cleaning</li>
+                <li><i class="fas fa-lightbulb"></i> Headlight Polishing</li>
+                <li><i class="fas fa-gem"></i> Alloy Wheel Cleaning</li>
+                <li><i class="fas fa-engine-warning"></i> Engine Clean & Shine</li>
+                <li><i class="fas fa-shield-alt"></i> Exterior Swirl Removal</li>
+                <li><i class="fas fa-border-all"></i> Door Beading Refurnishing</li>
+                <li><i class="fas fa-lightbulb"></i> Tail Light Polishing</li>
+                <li><i class="fas fa-oil-can"></i> Tar Remover</li>
+                <li><i class="fas fa-border-all"></i> Exterior Door Show Beading Enrichment</li>
+                <li><i class="fas fa-wrench"></i> All Hinges Cleaning & Lubrication</li>
+            </ul>
+            <form method="post" action="{% url 'book_appointment'  package='Detailing Works - Package 4'%}">
+                {% csrf_token %}
+                <button type="submit">Book Appointment</button>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <div class="sendcontainer">
+            <CENTER>
+                <h2>HOW IT WORKS?</h2>
+            </CENTER>
+            <section class="how-it-works">
+
+                <div class="step">
+                    <img src="{% static 'image/footericon/step1.jpg' %}" alt="Select Service">
+                    <p><strong>1. SELECT YOUR SERVICE</strong><br>You can login or checkout as a guest.</p>
+                </div>
+                <div class="step">
+                    <img src="{% static 'image/footericon/step2.jpg' %}" alt="Schedule Pickup">
+                    <p><strong>2. SCHEDULE YOUR PICKUP</strong><br>Choose the next best available time slot for pickup.
+                    </p>
+                </div>
+                <div class="step">
+                    <img src="{% static 'image/footericon/step3.jpg' %}" alt="Buy Service">
+                    <p><strong>3. BUY OUR SERVICE</strong><br>Pay online or offline & buy our service.</p>
+                </div>
+                <div class="step">
+                    <img src="{% static 'image/footericon/step4.jpg' %}" alt="Pick Up Car">
+                    <p><strong>4. PICK UP YOUR CAR</strong><br>We will take your car for repair.</p>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 KD Automobiles. Designed with <i class="fas fa-heart"></i> by naran.</p>
+        <p><a href="mailto:narandarank@gmail.com"><i class="fas fa-envelope"></i> Contact Us</a></p>
+    </footer>
+</section>
+
+{% endblock %}

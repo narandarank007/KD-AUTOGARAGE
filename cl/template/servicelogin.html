@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'boostrap/fonts/font.css' %}">
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> -->
+    <style>
+        body {
+            background: linear-gradient(to right, #030303, #777777);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: rgb(7, 7, 10);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .well {
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background-color: #0c0c0c;
+            border: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #4c4c4d;
+        }
+
+        .alert-warning {
+            font-size: 14px;
+            border-radius: 5px;
+        }
+
+        .container {
+            display: center;
+            justify-content: center;
+            align-items: center;
+          /* min-height: 100vh; */
+            max-width: 100%;
+            
+        }
+
+        .ma {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        .register-container {
+            display:center;
+            justify-content: space-between;
+            
+            align-items: center;
+            
+            padding: 5px;
+        }
+
+        form {
+            width: 100%;
+        }
+        .forgotten{
+            align-items:center;
+            padding: 5px ;
+            justify-content: space-between;
+
+
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .well {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .btn-primary {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    {% load crispy_forms_tags %}
+
+    <div class="container">
+        <div class="col-md-offset-4 col-md-4 well">
+            <h1>Service Login</h1>
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                {% for msg in messages %}
+                <div class="alert alert-success" role="alert">
+                    <strong>Hey!</strong> {{ msg }}
+                </div autocomplete="off" >
+                {% endfor %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary ma">Login</button><br><br>
+                <p class="forgotten">
+                    forgotten password!
+                    <a href="password_reset" class="btn btn-primary ma">clickhere</a>
+                </p>
+                    
+                
+                <p class="register-container">
+                    New user? Register now
+                    <a href="registerlogin" class="btn btn-primary ma">Register</a>
+                </p>
+            </form>
+            
+        </div>
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>
