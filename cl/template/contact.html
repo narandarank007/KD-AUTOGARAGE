@@ -40,17 +40,17 @@
             font-style: oblique;
             font-variant: small-caps;
         }
-
         header img {
+            flex-wrap: nowrap;
             width: 10%;
             height: 90%;
             background-size: cover;
-          
+            display: block;
             transform: translate(0px, 10px);
             position: absolute;
-            left: 60px;
+            left: 60px,10px;
+            
             top: 0px;
-
         }
 
         nav {
@@ -92,7 +92,8 @@
         }
 
         .container {
-            max-width: 50%;
+
+            max-width: 800px;
             max-height: 20%;
             padding: 15px;
             overflow: hidden;
@@ -173,6 +174,28 @@
         button {
             transition: background-color 0.3s ease;
         }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            /* Adjust max width as needed */
+            margin: auto;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            /* Default for mobile */
+            border: 0;
+        }
+
+        @media (min-width: 768px) {
+            .map-container iframe {
+                height: 450px;
+                /* Larger height for desktop */
+            }
+        }
     </style>
 </head>
 
@@ -203,7 +226,8 @@
                     Rajiv Gandhi Nagar, <br>
                     Koyambedu,Chennai</div>
                 <div><i class="fa fa-phone"></i>Phone: <a href="tel:8682087735">8682087735</a></div>
-                <div><i class="fa fa-envelope"></i>Email: <a href="mailto:kdautogarageservice.com">kdautogarageservice@gmail.com
+                <div><i class="fa fa-envelope"></i>Email: <a
+                        href="mailto:kdautogarageservice.com">kdautogarageservice@gmail.com
                     </a></div>
 
             </div>
@@ -234,10 +258,12 @@
             </form>
         </div>
     </section>
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d971.6457502835915!2d80.1857585482595!3d13.062194103850263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52618c2e150783%3A0x377ead45ac61bf53!2sKD%20Autogarage!5e0!3m2!1sen!2sin!4v1739204370228!5m2!1sen!2sin"
-        width="1349" height="450" style="border:10;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d971.6457502835915!2d80.1857585482595!3d13.062194103850263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52618c2e150783%3A0x377ead45ac61bf53!2sKD%20Autogarage!5e0!3m2!1sen!2sin!4v1739204370228!5m2!1sen!2sin"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
     <footer id="contact">
         <p>&copy; 2025 KD Automobiles. Designed with ♥ by naran.</p>
         <p><a href="mailto:narandarank@gmail.com">Contact Us</a></p>

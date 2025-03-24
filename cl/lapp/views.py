@@ -129,13 +129,13 @@ def contact(request):
             subject=f"New Message from {NAME}",
             message=admin_plain_message,
             from_email=settings.EMAIL_HOST_USER,
-            recipient_list=["naranraina1ooo@gmail"],  # Assuming there's a setting for the admin email
+            recipient_list=["kdautogarageservice@gmail.com"],  # Assuming there's a setting for the admin email
             html_message=admin_html_message
         )
 
         # Prepare and send confirmation email to the user
         user_context = {"name": NAME}
-        user_html_message = render_to_string("confimemail.html", user_context)
+        user_html_message = render_to_string("contactconfirm.html", user_context)
         user_plain_message = strip_tags(user_html_message)
 
         # Send email to the user
@@ -150,7 +150,8 @@ def contact(request):
     else:
      return render(request, "contact.html")
         
-    
+def show_item(request):
+    return render(request, "roughpaper.html")
 
      
 

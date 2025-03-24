@@ -44,7 +44,7 @@ urlpatterns = [
 
     #-----roadside----
     path('roadside',views.roadside),
-
+  
     #----redirect-------
     path('rhome',views.rhome),
     #--------service------
@@ -57,7 +57,7 @@ urlpatterns = [
     path('booking/<package>',views.book_appointment , name='book_appointment'),
 
     #-----------------------------------
-    
+    path('paper',views.show_item),
     
     
 
